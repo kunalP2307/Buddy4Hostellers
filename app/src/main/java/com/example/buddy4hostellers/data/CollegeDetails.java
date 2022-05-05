@@ -1,6 +1,6 @@
 package com.example.buddy4hostellers.data;
 
-public class CollegeList {
+public class CollegeDetails {
 
     public static final String[] colleges = {
             "DR. D. Y. PATIL INSTITUTE OF TECHNOLOGY Pimpri",
@@ -25,4 +25,11 @@ public class CollegeList {
             "Other"
     };
 
+    public static final String[] yearOfStudy = {
+            "Select Year",
+            "First Year",
+            "Second Year",
+            "Third Year",
+            "Other"
+    };
 }

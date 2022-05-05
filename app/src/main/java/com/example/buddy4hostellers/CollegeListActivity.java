@@ -2,13 +2,47 @@ package com.example.buddy4hostellers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Toast;
 
-public class CollegeListActivity extends AppCompatActivity {
+import com.example.buddy4hostellers.data.CollegeDetails;
+
+public class CollegeListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+
+    ListView collegeListView;
+    ImageView imageViewSearch;
+    EditText editTextSearchCollege;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_college_list);
+
+        initComponents();
+
+        CollegeListAdapter collegeListAdapter = new CollegeListAdapter(getApplicationContext());
+        collegeListView.setAdapter(collegeListAdapter);
+        collegeListView.setOnItemClickListener(this);
+
+    }
+
+    public void initComponents(){
+        this.collegeListView = findViewById(R.id.list_view_college_list);
+        this.imageViewSearch = findViewById(R.id.imageSearch);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+        String selectedCollege = CollegeDetails.colleges[i];
+        Intent intent = new Intent(CollegeListActivity.this,RegisterStudentCollegeActivity.class);
+        intent.putExtra("EXTRA_SELECTED_COLLEGE",selectedCollege);
+        startActivity(intent);
     }
 }

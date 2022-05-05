@@ -6,4 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".CollegeListActivity">
 
+   <ListView
+        android:id="@+id/list_view_college_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:dividerHeight="1dp"
+        android:footerDividersEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_search_college" />
+
+    <EditText
+        android:id="@+id/edit_text_search_college"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/edit_text_border"
+        android:ems="10"
+        android:hint="Search College"
+        android:inputType="textPersonName"
+        android:paddingLeft="12dp"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageSearch"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

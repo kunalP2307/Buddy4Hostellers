@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "476259919183",
+    "project_id": "buddy4hostellers",
+    "storage_bucket": "buddy4hostellers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476259919183:android:60fb3935c521ea3f0e513a",
+        "android_client_info": {
+          "package_name": "com.example.buddy4hostellers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476259919183-n9jq5fktp8f5gr7bnufc5hgf2id1gh7h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB28hNe8pKxsuzefFfYiGwduIKa_5_Dw1A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476259919183-n9jq5fktp8f5gr7bnufc5hgf2id1gh7h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

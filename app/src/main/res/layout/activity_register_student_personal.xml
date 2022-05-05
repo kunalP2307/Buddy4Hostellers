@@ -26,7 +26,7 @@
         android:text="Contact"
         android:textColor="@color/teal_200"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_clg_clg_name" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_reg_service_pro_name" />
 
     <TextView
         android:id="@+id/textView7"
@@ -37,7 +37,7 @@
         android:text="Password"
         android:textColor="@color/teal_200"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_reg_email" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_reg_service_pro_email" />
 
     <TextView
         android:id="@+id/textView8"
@@ -48,10 +48,10 @@
         android:text="Confirm Password"
         android:textColor="@color/teal_200"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_reg_pass" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_reg_service_pro_pass" />
 
     <EditText
-        android:id="@+id/edit_text_clg_clg_name"
+        android:id="@+id/edit_text_reg_service_pro_name"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="12dp"
@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/edit_text_reg_mobile"
+        android:id="@+id/edit_text_reg_servie_pro_mobile"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="12dp"
@@ -87,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/edit_text_reg_email"
+        android:id="@+id/edit_text_reg_service_pro_email"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="12dp"
@@ -106,7 +106,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/edit_text_reg_pass"
+        android:id="@+id/edit_text_reg_service_pro_pass"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="12dp"
@@ -124,7 +124,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <EditText
-        android:id="@+id/edit_text_reg_cong_pass"
+        android:id="@+id/edit_text_reg_reg_service_pro_cong_pass"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="12dp"
@@ -150,10 +150,10 @@
         android:text="Email"
         android:textColor="@color/teal_200"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_reg_mobile" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_reg_servie_pro_mobile" />
 
     <Button
-        android:id="@+id/btn_reg_clg_sign_up"
+        android:id="@+id/btn_reg_clg_reg_service_pro_sign_up"
         android:layout_width="150dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
@@ -165,6 +165,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_reg_cong_pass" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_reg_reg_service_pro_cong_pass" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

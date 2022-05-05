@@ -2,7 +2,9 @@ package com.example.buddy4hostellers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +12,7 @@ import android.widget.EditText;
 
 public class RegisterStudentPersonalActivity extends AppCompatActivity {
 
+    String TAG = "RegisterStudentPersonalActivity";
     EditText editTextName,editTextContact,editTextEmail,editTextPassword,editTextConfirmPass;
     Button buttonContinue;
 
@@ -25,12 +28,12 @@ public class RegisterStudentPersonalActivity extends AppCompatActivity {
 
     public void initComponents(){
 
-        this.editTextName = findViewById(R.id.edit_text_clg_clg_name);
-        this.editTextEmail = findViewById(R.id.edit_text_reg_email);
-        this.editTextContact = findViewById(R.id.edit_text_reg_mobile);
-        this.editTextPassword = findViewById(R.id.edit_text_reg_pass);
-        this.editTextConfirmPass = findViewById(R.id.edit_text_reg_cong_pass);
-        this.buttonContinue = findViewById(R.id.btn_reg_clg_sign_up);
+        this.editTextName = findViewById(R.id.edit_text_reg_service_pro_name);
+        this.editTextEmail = findViewById(R.id.edit_text_reg_service_pro_email);
+        this.editTextContact = findViewById(R.id.edit_text_reg_servie_pro_mobile);
+        this.editTextPassword = findViewById(R.id.edit_text_reg_service_pro_pass);
+        this.editTextConfirmPass = findViewById(R.id.edit_text_reg_reg_service_pro_cong_pass);
+        this.buttonContinue = findViewById(R.id.btn_reg_clg_reg_service_pro_sign_up);
 
     }
 
@@ -42,6 +45,22 @@ public class RegisterStudentPersonalActivity extends AppCompatActivity {
 
                 if(validInput()){
 
+                    String name = editTextName.getText().toString();
+                    String contact = editTextContact.getText().toString();
+                    String email = editTextEmail.getText().toString();
+                    String password = editTextPassword.getText().toString();
+
+
+                    Log.d(TAG, "onClick: "+email);
+                    Intent intent = new Intent( RegisterStudentPersonalActivity.this,RegisterStudentCollegeActivity.class);
+
+                    intent.putExtra("EXTRA_NAME",name);
+                    intent.putExtra("EXTRA_CONTACT",contact);
+                    intent.putExtra("EXTRA_EMAIL",email);
+                    intent.putExtra("EXTRA_PASSWORD",password);
+
+                    intent.putExtra("EXTRA_TEMP",password);
+                    startActivity(intent);
                 }
             }
         });
@@ -98,6 +117,6 @@ public class RegisterStudentPersonalActivity extends AppCompatActivity {
             isValid = false;
         }
 
-        return true;
+        return isValid;
     }
 }

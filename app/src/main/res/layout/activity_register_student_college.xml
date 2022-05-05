@@ -26,10 +26,10 @@
         android:text="Select Course"
         android:textColor="@color/teal_200"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_clg_clg_name" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_reg_service_pro_name" />
 
     <EditText
-        android:id="@+id/edit_text_clg_clg_name"
+        android:id="@+id/edit_text_reg_service_pro_name"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="12dp"
@@ -73,6 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
+        android:paddingLeft="8dp"
         android:text="Describe Yourself"
         android:layout_marginTop="12dp"
         android:textColor="@color/teal_200"
@@ -80,7 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/radioButton_reg_clg_male" />
 
     <Button
-        android:id="@+id/btn_reg_clg_sign_up"
+        android:id="@+id/btn_reg_clg_reg_service_pro_sign_up"
         android:layout_width="150dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
@@ -167,6 +168,7 @@
         android:layout_height="96dp"
         android:background="@drawable/edit_text_border"
         android:layout_marginStart="12dp"
+        android:paddingLeft="8dp"
         android:layout_marginEnd="12dp"
         android:ems="10"
         android:gravity="start|top"
@@ -176,5 +178,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:text="TextView"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_reg_clg_describe"
+        tools:layout_editor_absoluteX="47dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

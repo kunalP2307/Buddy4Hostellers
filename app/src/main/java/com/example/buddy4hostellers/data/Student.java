@@ -6,19 +6,16 @@ public class Student implements Serializable {
 
     private int userId;
     private String name;
-    private String email;
+    public String email;
     private String contact;
 
     private String collegeName;
     private String yearOfStudy;
     private String branchOfStudy;
     private boolean gender;
+    private String description;
 
-    public Student(){
-
-    }
-
-    public Student(int userId, String name, String email, String contact, String collegeName, String yearOfStudy, String branchOfStudy, boolean gender) {
+    public Student(int userId, String name, String email, String contact, String collegeName, String yearOfStudy, String branchOfStudy, boolean gender, String description) {
         this.userId = userId;
         this.name = name;
         this.email = email;
@@ -27,7 +24,14 @@ public class Student implements Serializable {
         this.yearOfStudy = yearOfStudy;
         this.branchOfStudy = branchOfStudy;
         this.gender = gender;
+        this.description = description;
     }
+
+    public Student(){
+
+    }
+
+
 
     public int getUserId() {
         return userId;

@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.buddy4hostellers">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +14,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Buddy4Hostellers">
+        <activity
+            android:name=".AddNearByCollegeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ShowImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SelectImagesActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAU1ekRaKYi44si7beZIklJg9LdHPCXJOU" />
+
+        <activity
+            android:name=".StudentProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentServicesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SelectUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterServiceProviderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CollegeListActivity"
+            android:exported="false" />
         <activity
             android:name=".RegisterStudentCollegeActivity"
             android:exported="false" />

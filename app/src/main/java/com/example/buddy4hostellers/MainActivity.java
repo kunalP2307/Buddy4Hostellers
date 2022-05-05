@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void initComponents(){
-        this.intent = new Intent(MainActivity.this, RegisterStudentPersonalActivity.class);
+        this.intent = new Intent(MainActivity.this, AddNearByCollegeActivity.class);
 
     }
 }
