@@ -40,9 +40,22 @@ public class CollegeListActivity extends AppCompatActivity implements AdapterVie
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+        Intent recievedIntent = getIntent();
+        String reqType = recievedIntent.getStringExtra("EXTRA_TYPE");
+
         String selectedCollege = CollegeDetails.colleges[i];
-        Intent intent = new Intent(CollegeListActivity.this,RegisterStudentCollegeActivity.class);
-        intent.putExtra("EXTRA_SELECTED_COLLEGE",selectedCollege);
-        startActivity(intent);
+
+        if(reqType.equals("ADD_NEAR_CLG")){
+            Intent intent = new Intent(CollegeListActivity.this,AddNearByCollegeActivity.class);
+            intent.putExtra("EXTRA_SELECTED_COLLEGE",selectedCollege);
+            startActivity(intent);
+        }
+
+        else {
+            Intent intent = new Intent(CollegeListActivity.this, RegisterStudentCollegeActivity.class);
+            intent.putExtra("EXTRA_SELECTED_COLLEGE", selectedCollege);
+            startActivity(intent);
+        }
+
     }
 }

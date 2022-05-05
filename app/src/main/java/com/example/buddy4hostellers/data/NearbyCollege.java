@@ -1,6 +1,8 @@
 package com.example.buddy4hostellers.data;
 
-public class NearbyCollege {
+import java.io.Serializable;
+
+public class NearbyCollege implements Serializable {
 
     private String nearByCollege;
     private double distanceFromCollege;

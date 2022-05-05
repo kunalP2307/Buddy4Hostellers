@@ -15,6 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Buddy4Hostellers">
         <activity
+            android:name=".AddAmenitiesDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddLocalityDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddRentDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddPlaceDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddNearByCollegeActivity"
             android:exported="false" />
         <activity

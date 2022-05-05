@@ -1,6 +1,8 @@
 package com.example.buddy4hostellers.data;
 
-public class PlaceDetails {
+import java.io.Serializable;
+
+public class PlaceDetails implements Serializable {
 
     String roomType;
     String maxAllowed;
