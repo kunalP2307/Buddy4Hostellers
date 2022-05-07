@@ -1,6 +1,8 @@
 package com.example.buddy4hostellers.data;
 
-public class LocalityDetails {
+import java.io.Serializable;
+
+public class LocalityDetails implements Serializable {
 
     String area;
     String street;

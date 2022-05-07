@@ -1,6 +1,7 @@
 package com.example.buddy4hostellers.data;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class LivingPlace implements Serializable {
 
@@ -10,7 +11,23 @@ public class LivingPlace implements Serializable {
     RentDetails rentDetails;
     LocalityDetails localityDetails;
     Amenities amenities;
-    InterestedStudents interestedStudents;
+    String imageReference;
+    InterestedStudents interestedStudents[];
+
+    public LivingPlace(){
+
+    }
+
+    public LivingPlace(String placeId, NearbyCollege nearbyCollege, PlaceDetails placeDetails, RentDetails rentDetails, LocalityDetails localityDetails, Amenities amenities, String imageReference, InterestedStudents[] interestedStudents) {
+        this.placeId = placeId;
+        this.nearbyCollege = nearbyCollege;
+        this.placeDetails = placeDetails;
+        this.rentDetails = rentDetails;
+        this.localityDetails = localityDetails;
+        this.amenities = amenities;
+        this.imageReference = imageReference;
+        this.interestedStudents = interestedStudents;
+    }
 
     public String getPlaceId() {
         return placeId;
@@ -60,11 +77,20 @@ public class LivingPlace implements Serializable {
         this.amenities = amenities;
     }
 
-    public InterestedStudents getInterestedStudents() {
+    public String getImageReference() {
+        return imageReference;
+    }
+
+    public void setImageReference(String imageReference) {
+        this.imageReference = imageReference;
+    }
+
+    public InterestedStudents[] getInterestedStudents() {
         return interestedStudents;
     }
 
-    public void setInterestedStudents(InterestedStudents interestedStudents) {
+    public void setInterestedStudents(InterestedStudents[] interestedStudents) {
         this.interestedStudents = interestedStudents;
     }
+
 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -33,6 +34,15 @@ public class AddRentDetailsActivity extends AppCompatActivity {
     }
 
     public void addListeners(){
+
+        String furnishing[] = {"Select Furnishing Type","Fully","Semi","Unfurnished"};
+
+
+        ArrayAdapter arrayAdapterRoomType = new ArrayAdapter(this, android.R.layout.simple_spinner_item,furnishing);
+        arrayAdapterRoomType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerFurnishing.setAdapter(arrayAdapterRoomType);
+
+
         this.buttonContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

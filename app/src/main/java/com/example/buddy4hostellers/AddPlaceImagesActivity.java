@@ -17,31 +17,29 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.buddy4hostellers.data.LivingPlace;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
-import java.util.UUID;
 
-public class SelectImagesActivity extends AppCompatActivity {
+public class AddPlaceImagesActivity extends AppCompatActivity {
 
-    // views for button
     private Button btnSelect, btnUpload;
 
-    // view for image view
     private ImageView imageView;
 
-    // Uri indicates, where the image will be picked from
     private Uri filePath;
 
-    // request code
     private final int PICK_IMAGE_REQUEST = 22;
 
-    // instance for firebase storage and StorageReference
     FirebaseStorage storage;
     StorageReference storageReference;
 
@@ -49,7 +47,7 @@ public class SelectImagesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_images);
+        setContentView(R.layout.activity_add_place_images);
 
         ActionBar actionBar;
         actionBar = getSupportActionBar();
@@ -60,14 +58,12 @@ public class SelectImagesActivity extends AppCompatActivity {
 
         // initialise views
         btnSelect = findViewById(R.id.btnChoose);
-        btnUpload = findViewById(R.id.btnUpload);
-        imageView = findViewById(R.id.imgView);
+        btnUpload = findViewById(R.id.btn_continue_add_image);
+        imageView = findViewById(R.id.imgViewPropertyImage);
 
-        // get the Firebase storage reference
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        // on pressing btnSelect SelectImage() is called
         btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -76,7 +72,6 @@ public class SelectImagesActivity extends AppCompatActivity {
             }
         });
 
-        // on pressing btnUpload uploadImage() is called
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -86,11 +81,9 @@ public class SelectImagesActivity extends AppCompatActivity {
         });
     }
 
-    // Select Image method
     private void SelectImage()
     {
 
-        // Defining Implicit Intent to mobile gallery
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -101,7 +94,6 @@ public class SelectImagesActivity extends AppCompatActivity {
                 PICK_IMAGE_REQUEST);
     }
 
-    // Override onActivityResult method
     @Override
     protected void onActivityResult(int requestCode,
                                     int resultCode,
@@ -112,20 +104,14 @@ public class SelectImagesActivity extends AppCompatActivity {
                 resultCode,
                 data);
 
-        // checking request code and result code
-        // if request code is PICK_IMAGE_REQUEST and
-        // resultCode is RESULT_OK
-        // then set image in the image view
         if (requestCode == PICK_IMAGE_REQUEST
                 && resultCode == RESULT_OK
                 && data != null
                 && data.getData() != null) {
 
-            // Get the Uri of data
             filePath = data.getData();
             try {
 
-                // Setting image on image view using Bitmap
                 Bitmap bitmap = MediaStore
                         .Images
                         .Media
@@ -136,32 +122,29 @@ public class SelectImagesActivity extends AppCompatActivity {
             }
 
             catch (IOException e) {
-                // Log the exception
                 e.printStackTrace();
             }
         }
     }
 
-    // UploadImage method
     private void uploadImage()
     {
         if (filePath != null) {
 
-            // Code for showing progressDialog while uploading
             ProgressDialog progressDialog
                     = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            // Defining the child of storageReference
+            Intent intent = getIntent();
+            LivingPlace livingPlace = (LivingPlace) intent.getSerializableExtra("EXTRA_LIVING_PLACE");
+
             StorageReference ref
                     = storageReference
                     .child(
-                            "images/"
-                                    + UUID.randomUUID().toString());
+                            "images/I"
+                                    +livingPlace.getPlaceId());
 
-            // adding listeners on upload
-            // or failure of image
             ref.putFile(filePath)
                     .addOnSuccessListener(
                             new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -175,10 +158,25 @@ public class SelectImagesActivity extends AppCompatActivity {
                                     // Dismiss dialog
                                     progressDialog.dismiss();
                                     Toast
-                                            .makeText(SelectImagesActivity.this,
+                                            .makeText(AddPlaceImagesActivity.this,
                                                     "Image Uploaded!!",
                                                     Toast.LENGTH_SHORT)
                                             .show();
+
+                                    FirebaseDatabase.getInstance().getReference("LivingPlaces")
+                                            .child(livingPlace.getPlaceId())
+                                            .setValue(livingPlace).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if(task.isSuccessful()){
+                                                Toast.makeText(AddPlaceImagesActivity.this, "Added Your place", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(AddPlaceImagesActivity.this,MainActivity.class));
+                                            }
+                                            else{
+                                                Toast.makeText(AddPlaceImagesActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
                                 }
                             })
 
@@ -187,10 +185,9 @@ public class SelectImagesActivity extends AppCompatActivity {
                         public void onFailure(@NonNull Exception e)
                         {
 
-                            // Error, Image not uploaded
                             progressDialog.dismiss();
                             Toast
-                                    .makeText(SelectImagesActivity.this,
+                                    .makeText(AddPlaceImagesActivity.this,
                                             "Failed " + e.getMessage(),
                                             Toast.LENGTH_SHORT)
                                     .show();
@@ -199,8 +196,6 @@ public class SelectImagesActivity extends AppCompatActivity {
                     .addOnProgressListener(
                             new OnProgressListener<UploadTask.TaskSnapshot>() {
 
-                                // Progress Listener for loading
-                                // percentage on the dialog box
                                 @Override
                                 public void onProgress(
                                         UploadTask.TaskSnapshot taskSnapshot)

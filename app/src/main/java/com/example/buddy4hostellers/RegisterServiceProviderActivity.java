@@ -17,6 +17,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RegisterServiceProviderActivity extends AppCompatActivity {
 
     EditText editTextName,editTextContact,editTextEmail,editTextPassword,editTextConfirmPass;
@@ -127,7 +130,10 @@ public class RegisterServiceProviderActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
 
-                            ServiceProvider serviceProvider = new ServiceProvider(1,name,email,contact,null);
+                            ArrayList<String> temp = new ArrayList<>();
+                            temp.add("nothing");
+                            
+                            ServiceProvider serviceProvider = new ServiceProvider(1,name,email,contact,temp,temp,temp);
                             FirebaseDatabase.getInstance().getReference("UserServiceProvider")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(serviceProvider).addOnCompleteListener(new OnCompleteListener<Void>() {

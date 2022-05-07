@@ -2,8 +2,10 @@ package com.example.buddy4hostellers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +14,7 @@ import android.widget.Toolbar;
 
 import com.example.buddy4hostellers.data.LivingPlace;
 import com.example.buddy4hostellers.data.NearbyCollege;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.Serializable;
 
@@ -22,6 +25,9 @@ public class AddNearByCollegeActivity extends AppCompatActivity {
     EditText editTextDistanceFromCollege;
     EditText textViewCollegeName;
     Button buttonFindDistance,buttonContinue;
+    String key;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,11 @@ public class AddNearByCollegeActivity extends AppCompatActivity {
         addListeners();
         setSelectedCollege();
         setActionBarText();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        key = database.getReference("LivingPlaces").push().getKey();
+
+
     }
 
     public void setActionBarText(){
@@ -70,11 +81,14 @@ public class AddNearByCollegeActivity extends AppCompatActivity {
         });
 
         this.buttonContinue.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("LongLogTag")
             @Override
             public void onClick(View view) {
 
+
                 LivingPlace livingPlace = new LivingPlace();
-                livingPlace.setPlaceId("1");
+                livingPlace.setPlaceId(key);
+                //Log.d(TAG, "onClick: L"+key);
 
                 NearbyCollege nearbyCollege = new NearbyCollege(textViewCollegeName.getText().toString(),Double.parseDouble(editTextDistanceFromCollege.getText().toString()));
                 livingPlace.setNearbyCollege(nearbyCollege);

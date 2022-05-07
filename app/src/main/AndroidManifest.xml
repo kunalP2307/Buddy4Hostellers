@@ -33,7 +33,7 @@
             android:name=".ShowImageActivity"
             android:exported="false" />
         <activity
-            android:name=".SelectImagesActivity"
+            android:name=".AddPlaceImagesActivity"
             android:exported="false" />
 
         <meta-data
