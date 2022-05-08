@@ -15,6 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Buddy4Hostellers">
         <activity
+            android:name=".ServiceProvHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TempActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ShowPlaceDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ShowAllLivingPlaces"
+            android:exported="false" />
+        <activity
             android:name=".AddAmenitiesDetailsActivity"
             android:exported="false" />
         <activity

@@ -10,6 +10,10 @@ public class LocalityDetails implements Serializable {
     double latitude;
     double longitude;
 
+    public LocalityDetails(){
+
+    }
+
     public LocalityDetails(String area, String street, String landMark, double latitude, double longitude) {
         this.area = area;
         this.street = street;

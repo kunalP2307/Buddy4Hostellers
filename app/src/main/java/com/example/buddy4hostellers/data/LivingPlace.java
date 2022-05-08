@@ -1,7 +1,6 @@
 package com.example.buddy4hostellers.data;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class LivingPlace implements Serializable {
 
@@ -11,6 +10,7 @@ public class LivingPlace implements Serializable {
     RentDetails rentDetails;
     LocalityDetails localityDetails;
     Amenities amenities;
+    String ownerContact;
     String imageReference;
     InterestedStudents interestedStudents[];
 

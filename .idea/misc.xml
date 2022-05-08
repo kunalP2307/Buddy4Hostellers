@@ -28,12 +28,18 @@
         <entry key="app/src/main/res/layout/activity_select_images.xml" value="0.2980072463768116" />
         <entry key="app/src/main/res/layout/activity_select_location.xml" value="0.2223731884057971" />
         <entry key="app/src/main/res/layout/activity_select_user.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/activity_service_prov_home.xml" value="0.23233695652173914" />
+        <entry key="app/src/main/res/layout/activity_show_all_living_places.xml" value="0.23233695652173914" />
         <entry key="app/src/main/res/layout/activity_show_image.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_show_place_details.xml" value="0.264" />
         <entry key="app/src/main/res/layout/activity_student_home.xml" value="0.2980072463768116" />
         <entry key="app/src/main/res/layout/activity_student_profile.xml" value="0.2980072463768116" />
         <entry key="app/src/main/res/layout/activity_student_services.xml" value="0.2980072463768116" />
+        <entry key="app/src/main/res/layout/activity_temp.xml" value="0.23233695652173914" />
         <entry key="app/src/main/res/layout/college_name_list_view.xml" value="0.23233695652173914" />
+        <entry key="app/src/main/res/layout/place_list_item.xml" value="0.536" />
         <entry key="app/src/main/res/menu/menu_navigation.xml" value="0.3229166666666667" />
+        <entry key="app/src/main/res/menu/menu_service_provider_menu.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>

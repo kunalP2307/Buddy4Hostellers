@@ -1,0 +1,99 @@
+package com.example.buddy4hostellers;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.widget.ImageView;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+
+import com.example.buddy4hostellers.data.CollegeDetails;
+import com.example.buddy4hostellers.data.LivingPlace;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.util.List;
+
+public class PlaceListAdapter extends BaseAdapter {
+
+    Context context;
+    LayoutInflater layoutInflater;
+    List<LivingPlace> livingPlaces;
+    private static final String TAG = "PlaceListAdapter";
+
+    public PlaceListAdapter(Context applicationContext,List<LivingPlace> livingPlaces){
+        this.context = applicationContext;
+        this.livingPlaces = livingPlaces;
+        this.layoutInflater = (LayoutInflater.from(applicationContext));
+    }
+
+    @Override
+    public int getCount() {
+        return this.livingPlaces.size();
+    }
+
+    @Override
+    public Object getItem(int i) {
+        return livingPlaces.get(i);
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        view = layoutInflater.inflate(R.layout.place_list_item,null);
+
+        ImageView imageView = view.findViewById(R.id.image_view_property_img);
+
+        StorageReference mImageRef =
+                FirebaseStorage.getInstance().getReference("images/I-N1TvMsIRNGBYZg3tET_");
+        final long ONE_MEGABYTE = 1024 * 1024;
+        mImageRef.getBytes(ONE_MEGABYTE)
+                .addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                    @Override
+                    public void onSuccess(byte[] bytes) {
+                        Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                        DisplayMetrics dm = new DisplayMetrics();
+                        //  getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+                        imageView.setMinimumHeight(300);
+                        imageView.setMinimumWidth(300);
+                        imageView.setImageBitmap(bm);
+                        Log.d(TAG, "onSuccess: "+bm.toString());
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
+        
+        return view;
+    }
+}

@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.buddy4hostellers.data.CollegeDetails;
 
@@ -33,7 +32,7 @@ public class CollegeListActivity extends AppCompatActivity implements AdapterVie
     }
 
     public void initComponents(){
-        this.collegeListView = findViewById(R.id.list_view_college_list);
+        this.collegeListView = findViewById(R.id.list_view_living_place);
         this.imageViewSearch = findViewById(R.id.imageSearch);
     }
 

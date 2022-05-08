@@ -1,5 +1,6 @@
 package com.example.buddy4hostellers;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -14,7 +15,13 @@ import android.widget.Toolbar;
 
 import com.example.buddy4hostellers.data.LivingPlace;
 import com.example.buddy4hostellers.data.NearbyCollege;
+import com.example.buddy4hostellers.data.ServiceProvider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 
@@ -25,8 +32,8 @@ public class AddNearByCollegeActivity extends AppCompatActivity {
     EditText editTextDistanceFromCollege;
     EditText textViewCollegeName;
     Button buttonFindDistance,buttonContinue;
-    String key;
-
+    String key,userId;
+    String ownerContact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +41,12 @@ public class AddNearByCollegeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_near_by_college);
 
         bindComponents();
+        getUserId();
+
         addListeners();
         setSelectedCollege();
         setActionBarText();
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         key = database.getReference("LivingPlaces").push().getKey();
@@ -73,6 +83,7 @@ public class AddNearByCollegeActivity extends AppCompatActivity {
         this.textViewCollegeName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                getOwnerContact();
 
                 Intent intent = new Intent(AddNearByCollegeActivity.this,CollegeListActivity.class);
                 intent.putExtra("EXTRA_TYPE","ADD_NEAR_CLG");
@@ -93,6 +104,8 @@ public class AddNearByCollegeActivity extends AppCompatActivity {
                 NearbyCollege nearbyCollege = new NearbyCollege(textViewCollegeName.getText().toString(),Double.parseDouble(editTextDistanceFromCollege.getText().toString()));
                 livingPlace.setNearbyCollege(nearbyCollege);
 
+
+
                 Intent intent = new Intent(AddNearByCollegeActivity.this,AddPlaceDetailsActivity.class);
                 intent.putExtra("EXTRA_LIVING_PLACE", (Serializable) livingPlace);
                 startActivity(intent);
@@ -105,5 +118,37 @@ public class AddNearByCollegeActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @SuppressLint("LongLogTag")
+    public void getUserId(){
+
+        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        Log.d(TAG, "getUserId: "+userId);
+    }
+
+
+    public void getOwnerContact(){
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("LivingPlaces");
+        DatabaseReference child = databaseReference.child(userId);
+
+        child.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("LongLogTag")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ServiceProvider serviceProvider = snapshot.getValue(ServiceProvider.class);
+                Log.d(TAG, "onDataChange: "+serviceProvider.getContact());
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
     }
 }

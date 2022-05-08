@@ -19,8 +19,8 @@ public class CollegeListAdapter extends BaseAdapter{
         this.context = applicationContext;
         this.collegeList = CollegeDetails.colleges;
         this.layoutInflater = (LayoutInflater.from(applicationContext));
-
     }
+
     @Override
     public int getCount() {
         return this.collegeList.length;
@@ -38,7 +38,7 @@ public class CollegeListAdapter extends BaseAdapter{
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = layoutInflater.inflate(R.layout.college_name_list_view,null);
+        view = layoutInflater.inflate(R.layout.college_name_list_item,null);
         TextView textViewCollegeName = (TextView) view.findViewById(R.id.textview_college_name);
         textViewCollegeName.setText(collegeList[i]);
         return view;

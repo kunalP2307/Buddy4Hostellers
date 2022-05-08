@@ -10,6 +10,12 @@ public class RentDetails implements Serializable {
     double maintenance;
     String furnishing;
 
+    RentDetails(){
+
+    }
+
+
+
     public RentDetails(double rent, boolean negotiable, double deposit, double maintenance, String furnishing) {
         this.rent = rent;
         this.negotiable = negotiable;
