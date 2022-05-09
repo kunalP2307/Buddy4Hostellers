@@ -3,6 +3,7 @@ package com.example.buddy4hostellers;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -133,14 +134,16 @@ public class RegisterServiceProviderActivity extends AppCompatActivity {
                             ArrayList<String> temp = new ArrayList<>();
                             temp.add("nothing");
                             
-                            ServiceProvider serviceProvider = new ServiceProvider(1,name,email,contact,temp,temp,temp);
+                            ServiceProvider serviceProvider = new ServiceProvider(1,name,email,contact,null,null,temp);
                             FirebaseDatabase.getInstance().getReference("UserServiceProvider")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(serviceProvider).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful())
+                                    if(task.isSuccessful()) {
                                         Toast.makeText(RegisterServiceProviderActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(RegisterServiceProviderActivity.this,ServiceProvHomeActivity.class));
+                                    }
                                     else
                                         Toast.makeText(RegisterServiceProviderActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
                                 }

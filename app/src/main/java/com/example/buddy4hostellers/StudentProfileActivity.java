@@ -31,7 +31,7 @@ public class StudentProfileActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),StudentHomeActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.services:
+                    case R.id.saved:
                         startActivity(new Intent(getApplicationContext(),StudentServicesActivity.class));
                         overridePendingTransition(0,0);
                         return true;

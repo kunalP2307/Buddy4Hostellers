@@ -1,13 +1,22 @@
 package com.example.buddy4hostellers;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.buddy4hostellers.data.LivingPlace;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class ShowPlaceDetailsActivity extends AppCompatActivity {
 
@@ -26,14 +35,46 @@ public class ShowPlaceDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_place_details);
 
+        livingPlace = (LivingPlace) getIntent().getSerializableExtra("EXTRA_SELECTED_PLACE");
+
+        showImage();
         bindComponents();
 
-        livingPlace = (LivingPlace) getIntent().getSerializableExtra("EXTRA_SELECTED_PLACE");
+
+
 
         setDetails();
 
     }
 
+    public void showImage(){
+
+        ImageView imageView = findViewById(R.id.image_view_place_details_img);
+
+        StorageReference mImageRef =
+                FirebaseStorage.getInstance().getReference("images/I"+livingPlace.getPlaceId());
+        final long ONE_MEGABYTE = 1024 * 1024;
+        mImageRef.getBytes(ONE_MEGABYTE)
+                .addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                    @Override
+                    public void onSuccess(byte[] bytes) {
+                        Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                        DisplayMetrics dm = new DisplayMetrics();
+                        getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+                        imageView.setMinimumHeight(300);
+                        imageView.setMinimumWidth(300);
+                        imageView.setImageBitmap(bm);
+                        Log.d(TAG, "onSuccess: "+bm.toString());
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
+
+    }
     public void setDetails(){
 
         textViewNearCollege.setText(livingPlace.getNearbyCollege().getNearByCollege());
@@ -41,7 +82,32 @@ public class ShowPlaceDetailsActivity extends AppCompatActivity {
 
         textViewAddress.setText(livingPlace.getLocalityDetails().getArea()+" "+livingPlace.getLocalityDetails().getStreet());
         textViewRent.setText(Double.toString(livingPlace.getRentDetails().getRent()));
-        
+
+        if(livingPlace.getPlaceDetails().isTenantType())
+            textViewTenantType.setText("Male");
+        else
+            textViewTenantType.setText("Female");
+
+        textViewMaxAllowed.setText(livingPlace.getPlaceDetails().getMaxAllowed());
+        textViewApartmentType.setText(livingPlace.getPlaceDetails().getApartmentType());
+        textViewRoomType.setText(livingPlace.getPlaceDetails().getRoomType());
+        textViewBhkType.setText(livingPlace.getPlaceDetails().getBhkType());
+        textViewFloor.setText(Integer.toString(livingPlace.getPlaceDetails().getFloor()));
+        getTextViewApartmentName.setText(livingPlace.getPlaceDetails().getApartmentName());
+        textViewArea.setText(livingPlace.getLocalityDetails().getArea());
+        textViewStreet.setText(livingPlace.getLocalityDetails().getStreet());
+        textViewLandMark.setText(livingPlace.getLocalityDetails().getLandMark());
+
+        textViewDetailsRent.setText(Double.toString(livingPlace.getRentDetails().getRent()));
+        textViewDeposit.setText(Double.toString(livingPlace.getRentDetails().getDeposit()));
+        textViewMaintenance.setText(Double.toString(livingPlace.getRentDetails().getMaintenance()));
+        textViewFurnishing.setText(livingPlace.getRentDetails().getFurnishing());
+
+        Double rentPerHead;
+        rentPerHead = livingPlace.getRentDetails().getRent() / Integer.parseInt(livingPlace.getPlaceDetails().getMaxAllowed());
+
+        textViewRentPerHead.setText(Double.toString(rentPerHead));
+
 
     }
 
@@ -65,7 +131,7 @@ public class ShowPlaceDetailsActivity extends AppCompatActivity {
         this.textViewArea = findViewById(R.id.text_view_place_details_area);
         this.textViewLandMark = findViewById(R.id.text_view_place_details_landmark);
         this.imageViewViewOnMap = findViewById(R.id.image_view_place_details_view_on_map);
-        this.textViewDetailsRent = findViewById(R.id.text_view_place_details_rent_det_rent2);
+        this.textViewDetailsRent = findViewById(R.id.text_view_place_details_rent_det_rent);
         this.textViewDeposit = findViewById(R.id.text_view_place_details_rent_det_deposite);
         this.textViewMaintenance = findViewById(R.id.text_view_place_details_rent_det_maintenance);
         this.textViewFurnishing = findViewById(R.id.text_view_place_details_rent_det_furnishing);

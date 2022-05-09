@@ -21,7 +21,7 @@ public class StudentServicesActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: ");
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
 
-        bottomNavigationView.setSelectedItemId(R.id.services);
+        bottomNavigationView.setSelectedItemId(R.id.saved);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -31,7 +31,7 @@ public class StudentServicesActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),StudentHomeActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.services:
+                    case R.id.saved:
                         return true;
                     case R.id.profile:
                         startActivity(new Intent(getApplicationContext(),StudentProfileActivity.class));

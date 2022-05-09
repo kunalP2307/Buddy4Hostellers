@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
 
     String TAG = "LoginRegisterActivity";
     EditText editTextEmail,editTextPassword;
-    Button buttonLogin;
+    Button buttonLogin,buttonSignUp;
     FirebaseAuth firebaseAuth;
 
 
@@ -40,6 +41,24 @@ public class LoginRegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(validInput())
                     loginUser();
+            }
+        });
+        this.buttonSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = getIntent();
+
+                String userType = intent.getStringExtra("USER_TYPE");
+
+                if(userType.equals("STUDENT")){
+                    startActivity(new Intent(LoginRegisterActivity.this,RegisterStudentPersonalActivity.class));
+                }
+
+                else{
+                    startActivity(new Intent(LoginRegisterActivity.this,RegisterServiceProviderActivity.class));
+                }
+
+
             }
         });
     }
@@ -73,6 +92,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.edit_text_login_email);
         editTextPassword = findViewById(R.id.edit_text_login_pass);
         buttonLogin = findViewById(R.id.btn_login_login);
+        buttonSignUp = findViewById(R.id.buttonSignUp);
     }
 
     public void loginUser(){
@@ -90,11 +110,13 @@ public class LoginRegisterActivity extends AppCompatActivity {
 
                     Intent intent = getIntent();
 
+                    String loggedUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    Log.d(TAG, "onComplete: Logged User id : "+loggedUserId);
                     String userType = intent.getStringExtra("USER_TYPE");
                     if(userType.equals("STUDENT"))
-                        startActivity(new Intent(LoginRegisterActivity.this,RegisterStudentPersonalActivity.class));
+                        startActivity(new Intent(LoginRegisterActivity.this,StudentHomeActivity.class));
                     else
-                        startActivity(new Intent(LoginRegisterActivity.this,RegisterServiceProviderActivity.class));
+                        startActivity(new Intent(LoginRegisterActivity.this,ServiceProvHomeActivity.class));
 
                 }
                 else{

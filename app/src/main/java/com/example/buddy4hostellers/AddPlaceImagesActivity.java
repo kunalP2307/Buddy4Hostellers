@@ -170,7 +170,7 @@ public class AddPlaceImagesActivity extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(task.isSuccessful()){
                                                 Toast.makeText(AddPlaceImagesActivity.this, "Added Your place", Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(AddPlaceImagesActivity.this,MainActivity.class));
+                                                startActivity(new Intent(AddPlaceImagesActivity.this,PlaceAddedActivity.class));
                                             }
                                             else{
                                                 Toast.makeText(AddPlaceImagesActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();

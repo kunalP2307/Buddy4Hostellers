@@ -9,12 +9,11 @@ public class ServiceProvider implements Serializable {
     private String name;
     private String email;
     private String contact;
-    private List<String> myPlaces;
-    private List<String> myMesses;
+    private List<LivingPlace> myPlaces;
+    private List<Mess> myMesses;
     private List<String> extras;
 
-
-    public ServiceProvider(int userId, String name, String email, String contact, List<String> myPlaces, List<String> myMesses, List<String> extras) {
+    public ServiceProvider(int userId, String name, String email, String contact, List<LivingPlace> myPlaces, List<Mess> myMesses, List<String> extras) {
         this.userId = userId;
         this.name = name;
         this.email = email;
@@ -28,19 +27,19 @@ public class ServiceProvider implements Serializable {
 
     }
 
-    public List<String> getMyPlaces() {
+    public List<LivingPlace> getMyPlaces() {
         return myPlaces;
     }
 
-    public void setMyPlaces(List<String> myPlaces) {
+    public void setMyPlaces(List<LivingPlace> myPlaces) {
         this.myPlaces = myPlaces;
     }
 
-    public List<String> getMyMesses() {
+    public List<Mess> getMyMesses() {
         return myMesses;
     }
 
-    public void setMyMesses(List<String> myMesses) {
+    public void setMyMesses(List<Mess> myMesses) {
         this.myMesses = myMesses;
     }
 

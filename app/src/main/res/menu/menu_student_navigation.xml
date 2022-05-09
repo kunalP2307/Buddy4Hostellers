@@ -6,9 +6,9 @@
         android:title="Home"
         android:icon="@drawable/ic_home"/>
     <item
-        android:id="@+id/services"
-        android:title="Services"
-        android:icon="@drawable/ic_services"/>
+        android:id="@+id/saved"
+        android:title="Saved Ads"
+        android:icon="@drawable/ic_baseline_watch_later_24"/>
 
     <item
         android:id="@+id/profile"
