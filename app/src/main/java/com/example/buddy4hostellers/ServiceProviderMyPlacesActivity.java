@@ -6,35 +6,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class ServiceProvHomeActivity extends AppCompatActivity {
-
-    Button buttonAddPlaceAd,buttonAddMessAd;
-
+public class ServiceProviderMyPlacesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_service_prov_home);
+        setContentView(R.layout.activity_service_provider_my_places);
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation_service_provider);
 
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.ads);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.home:
+                        startActivity(new Intent(getApplicationContext(),ServiceProvHomeActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
                     case R.id.ads:
-                        startActivity(new Intent(getApplicationContext(),ServiceProviderMyPlacesActivity.class));
-                        overridePendingTransition(0,0);
+
                         return true;
                     case R.id.profile:
                         startActivity(new Intent(getApplicationContext(),ServiceProviderProfileActivity.class));
@@ -44,36 +39,5 @@ public class ServiceProvHomeActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-        bindComponents();
-        addListeners();
-
-
-
-
     }
-
-    public void bindComponents(){
-        this.buttonAddMessAd = findViewById(R.id.button_add_mess_ad);
-        this.buttonAddPlaceAd = findViewById(R.id.button_add_place_ad);
-    }
-
-    public void addListeners(){
-
-        this.buttonAddPlaceAd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ServiceProvHomeActivity.this,AddNearByCollegeActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        this.buttonAddMessAd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-    }
-
 }

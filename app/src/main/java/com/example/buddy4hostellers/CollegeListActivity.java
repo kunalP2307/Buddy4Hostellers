@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -11,12 +12,14 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.buddy4hostellers.data.CollegeDetails;
+import com.example.buddy4hostellers.data.LivingPlace;
 
 public class CollegeListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     ListView collegeListView;
     ImageView imageViewSearch;
     EditText editTextSearchCollege;
+    private static final String TAG = "CollegeListActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,9 @@ public class CollegeListActivity extends AppCompatActivity implements AdapterVie
         if(reqType.equals("ADD_NEAR_CLG")){
             Intent intent = new Intent(CollegeListActivity.this,AddNearByCollegeActivity.class);
             intent.putExtra("EXTRA_SELECTED_COLLEGE",selectedCollege);
+            LivingPlace livingPlace = (LivingPlace) getIntent().getSerializableExtra("EXTRA_LIVING_PLACE");
+            intent.putExtra("EXTRA_LIVING_PLACE",livingPlace);
+            Log.d(TAG, "onItemClick: "+livingPlace.getServiceProviderContactDetails().getContact());
             startActivity(intent);
         }
 

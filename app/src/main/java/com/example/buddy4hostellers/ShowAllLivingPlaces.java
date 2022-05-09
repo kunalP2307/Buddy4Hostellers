@@ -18,6 +18,7 @@ public class ShowAllLivingPlaces extends AppCompatActivity implements AdapterVie
 
     private static final String TAG = "ShowAllLivingPlaces";
     List<LivingPlace> livingPlacesList;
+    PlaceListAdapter placeListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +27,15 @@ public class ShowAllLivingPlaces extends AppCompatActivity implements AdapterVie
 
         initListView();
 
-
-
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+        LivingPlace livingPlace = (LivingPlace) placeListAdapter.getItem(i);
+        Intent intent  = new Intent(ShowAllLivingPlaces.this,ShowPlaceDetailsActivity.class);
+        intent.putExtra("EXTRA_SELECTED_PLACE",livingPlace);
+        startActivity(intent);
 
 
     }
@@ -46,7 +49,7 @@ public class ShowAllLivingPlaces extends AppCompatActivity implements AdapterVie
         List<LivingPlace> livingPlaces = (List<LivingPlace>) intent.getSerializableExtra("EXTRA_ALL_PLACES");
         Log.d(TAG, "onCreate: "+livingPlaces.get(0).getPlaceId());
 
-        PlaceListAdapter placeListAdapter = new PlaceListAdapter(getApplicationContext(),livingPlaces);
+        placeListAdapter = new PlaceListAdapter(getApplicationContext(),livingPlaces);
         listView.setAdapter(placeListAdapter);
         listView.setOnItemClickListener(this);
 

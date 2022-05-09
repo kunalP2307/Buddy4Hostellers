@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.buddy4hostellers.data.LivingPlace;
+
 public class ShowPlaceDetailsActivity extends AppCompatActivity {
 
     ImageView imageViewPlaceImage,imageViewViewOnMap;
@@ -16,8 +18,9 @@ public class ShowPlaceDetailsActivity extends AppCompatActivity {
             ,textViewDetailsRent,textViewDeposit,textViewMaintenance,textViewFurnishing
             ,textViewRentPerHead;
     Button buttonOtherDetails,buttonFindMates;
-
-
+    LivingPlace livingPlace;
+    private static final String TAG = "ShowPlaceDetailsActivit";
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +28,24 @@ public class ShowPlaceDetailsActivity extends AppCompatActivity {
 
         bindComponents();
 
+        livingPlace = (LivingPlace) getIntent().getSerializableExtra("EXTRA_SELECTED_PLACE");
+
+        setDetails();
+
     }
+
+    public void setDetails(){
+
+        textViewNearCollege.setText(livingPlace.getNearbyCollege().getNearByCollege());
+        textViewDistanceFromClg.setText(Double.toString(livingPlace.getNearbyCollege().getDistanceFromCollege()));
+
+        textViewAddress.setText(livingPlace.getLocalityDetails().getArea()+" "+livingPlace.getLocalityDetails().getStreet());
+        textViewRent.setText(Double.toString(livingPlace.getRentDetails().getRent()));
+        
+
+    }
+
+
 
     public void bindComponents(){
 
@@ -36,7 +56,7 @@ public class ShowPlaceDetailsActivity extends AppCompatActivity {
         this.textViewRent = findViewById(R.id.text_view_place_details_rent);
         this.textViewTenantType = findViewById(R.id.edit_text_place_details_tenant_type);
         this.textViewMaxAllowed = findViewById(R.id.text_view_place_details_max_allowed);
-        this.textViewApartmentType = findViewById(R.id.text_view_place_details_apartment_name);
+        this.textViewApartmentType = findViewById(R.id.edit_text_place_details_apt_type);
         this.textViewRoomType = findViewById(R.id.text_view_place_details_room_type);
         this.textViewBhkType = findViewById(R.id.text_view_place_details_bhk_type);
         this.textViewFloor = findViewById(R.id.text_view_placde_details_floor);
@@ -54,4 +74,6 @@ public class ShowPlaceDetailsActivity extends AppCompatActivity {
         this.buttonOtherDetails = findViewById(R.id.button_details_living_place_other_details);
 
     }
+
+
 }

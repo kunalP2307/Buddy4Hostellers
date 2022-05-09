@@ -40,8 +40,12 @@ public class AddNearByCollegeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_near_by_college);
 
+
+        LivingPlace livingPlace = (LivingPlace) getIntent().getSerializableExtra("EXTRA_LIVING_PLACE");
+        Log.d(TAG, "onCreate: "+livingPlace.getServiceProviderContactDetails().getContact());
+
         bindComponents();
-        getUserId();
+        //getUserId();
 
         addListeners();
         setSelectedCollege();
@@ -50,7 +54,6 @@ public class AddNearByCollegeActivity extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         key = database.getReference("LivingPlaces").push().getKey();
-
 
     }
 
@@ -81,12 +84,16 @@ public class AddNearByCollegeActivity extends AppCompatActivity {
     public void addListeners(){
 
         this.textViewCollegeName.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("LongLogTag")
             @Override
             public void onClick(View view) {
-                getOwnerContact();
+                //getOwnerContact();
 
                 Intent intent = new Intent(AddNearByCollegeActivity.this,CollegeListActivity.class);
                 intent.putExtra("EXTRA_TYPE","ADD_NEAR_CLG");
+                LivingPlace livingPlace = (LivingPlace) getIntent().getSerializableExtra("EXTRA_LIVING_PLACE");
+                intent.putExtra("EXTRA_LIVING_PLACE",livingPlace);
+                Log.d(TAG, "onClick: "+livingPlace.getServiceProviderContactDetails().getContact());
                 startActivity(intent);
             }
         });
@@ -97,9 +104,10 @@ public class AddNearByCollegeActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                LivingPlace livingPlace = new LivingPlace();
+                LivingPlace livingPlace = (LivingPlace) getIntent().getSerializableExtra("EXTRA_LIVING_PLACE");
+                Log.d(TAG, "onClick: L"+livingPlace.getServiceProviderContactDetails().getContact());
                 livingPlace.setPlaceId(key);
-                //Log.d(TAG, "onClick: L"+key);
+
 
                 NearbyCollege nearbyCollege = new NearbyCollege(textViewCollegeName.getText().toString(),Double.parseDouble(editTextDistanceFromCollege.getText().toString()));
                 livingPlace.setNearbyCollege(nearbyCollege);
@@ -147,8 +155,5 @@ public class AddNearByCollegeActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 }

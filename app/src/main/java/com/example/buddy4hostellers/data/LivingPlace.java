@@ -10,9 +10,11 @@ public class LivingPlace implements Serializable {
     RentDetails rentDetails;
     LocalityDetails localityDetails;
     Amenities amenities;
-    String ownerContact;
+    ServiceProviderContactDetails serviceProviderContactDetails;
     String imageReference;
     InterestedStudents interestedStudents[];
+
+
 
     public LivingPlace(){
 
@@ -27,6 +29,14 @@ public class LivingPlace implements Serializable {
         this.amenities = amenities;
         this.imageReference = imageReference;
         this.interestedStudents = interestedStudents;
+    }
+
+    public ServiceProviderContactDetails getServiceProviderContactDetails() {
+        return serviceProviderContactDetails;
+    }
+
+    public void setServiceProviderContactDetails(ServiceProviderContactDetails serviceProviderContactDetails) {
+        this.serviceProviderContactDetails = serviceProviderContactDetails;
     }
 
     public String getPlaceId() {

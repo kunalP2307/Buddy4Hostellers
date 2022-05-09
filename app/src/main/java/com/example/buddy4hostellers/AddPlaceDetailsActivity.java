@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,9 +19,10 @@ import java.io.Serializable;
 public class AddPlaceDetailsActivity extends AppCompatActivity {
 
     Spinner spinnerRoomType,spinnerTenantType,spinnerMaxAllowed,spinnerApartmentType,spinnerBHKType;
-    EditText editTextApartmentName,editTextFloor;
+    EditText editTextApartmentName,editTextFloor,editTextDescription;
     Button buttonContinue;
 
+    private static final String TAG = "AddPlaceDetailsActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,19 +44,22 @@ public class AddPlaceDetailsActivity extends AppCompatActivity {
                 String apartmentType = spinnerApartmentType.getSelectedItem().toString();
                 String apartmentName = editTextApartmentName.getText().toString();
                 String bhkType = spinnerBHKType.getSelectedItem().toString();
+                String description = editTextDescription.getText().toString();
                 int floor = Integer.parseInt(editTextFloor.getText().toString());
 
                 boolean tenant = false;
                 if(tenantType.equals("Male"))
                     tenant = true;
 
-                PlaceDetails placeDetails = new PlaceDetails(roomType,maxAllowed,tenant,apartmentType,apartmentName,bhkType,floor);
+                PlaceDetails placeDetails = new PlaceDetails(description,roomType,maxAllowed,tenant,apartmentType,apartmentName,bhkType,floor);
 
                 Intent intent = new Intent(AddPlaceDetailsActivity.this, AddLocalityDetailsActivity.class);
 
                 Intent recievedIntent = getIntent();
 
                 LivingPlace livingPlace = (LivingPlace) recievedIntent.getSerializableExtra("EXTRA_LIVING_PLACE");
+                Log.d(TAG, "onClick: "+livingPlace.getServiceProviderContactDetails().getContact());
+
                 livingPlace.setPlaceDetails(placeDetails);
 
                 intent.putExtra("EXTRA_LIVING_PLACE", (Serializable) livingPlace);
@@ -100,7 +105,7 @@ public class AddPlaceDetailsActivity extends AppCompatActivity {
         this.editTextApartmentName = findViewById(R.id.edit_text_apartment_name);
         this.editTextFloor = findViewById(R.id.edit_text_floor);
         this.buttonContinue = findViewById(R.id.button_place_details_continue);
-
+        this.editTextDescription = findViewById(R.id.edit_text_place_details_heading);
 
     }
 }

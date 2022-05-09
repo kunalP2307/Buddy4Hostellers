@@ -19,7 +19,184 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_student_navigation" />
+        app:menu="@menu/menu_service_provider_menu" />
+
+    <View
+        android:id="@+id/view25"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:background="@color/teal_200"
+        android:backgroundTint="@color/teal_200"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_service_provider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView58"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:text="List Your PG/Place on Buddy4Hostellers"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/textView49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:text="List Your Mess on Buddy4Hostellers"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView58"
+        app:srcCompat="@drawable/ic_baseline_check_circle_24" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView49"
+        app:srcCompat="@drawable/ic_baseline_check_circle_24" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView61"
+        app:srcCompat="@drawable/ic_baseline_check_circle_24" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView59"
+        app:srcCompat="@drawable/ic_baseline_check_circle_24" />
+
+    <TextView
+        android:id="@+id/textView59"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Increased Chances of Getting Rented"
+        android:textSize="16dp"
+
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView58" />
+
+    <TextView
+        android:id="@+id/textView61"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+
+        android:text="Serve to more bachelors"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView49" />
+
+    <TextView
+        android:id="@+id/textView62"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+
+        android:layout_marginTop="8dp"
+        android:text="Zero Charges"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toBottomOf="@+id/textView61" />
+
+    <TextView
+        android:id="@+id/textView60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Zero Charges"
+        android:textSize="16dp"
+
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView59" />
+
+    <Button
+        android:id="@+id/button_add_place_ad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="45dp"
+        android:text="Add PG/Place Ad"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:backgroundTint="#F44336"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView60" />
+
+    <Button
+        android:id="@+id/button_add_mess_ad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="45dp"
+        android:backgroundTint="#F44336"
+        android:text="Add Mess Ad"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView62" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_hostel" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view25"
+        app:srcCompat="@drawable/ic_mess" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

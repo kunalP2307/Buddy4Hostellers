@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        intent = new Intent(MainActivity.this,ShowPlaceDetailsActivity.class);
+        intent = new Intent(MainActivity.this,ShowAllLivingPlaces.class);
 
         Button button = findViewById(R.id.button3);
 
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         livingPlaces = new ArrayList<>();
 
-        /*FirebaseDatabase.getInstance().getReference("LivingPlaces").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("LivingPlaces").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 livingPlaces.clear();
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });*/
+        });
 
         ServiceProvider serviceProvider = new ServiceProvider(1,"kunal","mail","123",null,null,null);
 

@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -34,6 +35,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -69,10 +72,12 @@ public class PlaceListAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = layoutInflater.inflate(R.layout.place_list_item,null);
 
+        LivingPlace livingPlace = livingPlaces.get(i);
+
         ImageView imageView = view.findViewById(R.id.image_view_property_img);
 
         StorageReference mImageRef =
-                FirebaseStorage.getInstance().getReference("images/I-N1TvMsIRNGBYZg3tET_");
+                FirebaseStorage.getInstance().getReference("images/I"+livingPlace.getPlaceId());
         final long ONE_MEGABYTE = 1024 * 1024;
         mImageRef.getBytes(ONE_MEGABYTE)
                 .addOnSuccessListener(new OnSuccessListener<byte[]>() {
@@ -93,7 +98,22 @@ public class PlaceListAdapter extends BaseAdapter {
                 // Handle any errors
             }
         });
-        
+
+        TextView textViewHeading,textViewAddress,textViewRent,textViewRoomType,textViewDistance;
+
+        textViewHeading = view.findViewById(R.id.textView_place_heading);
+        textViewAddress  = view.findViewById(R.id.text_view_place_address);
+        textViewRent = view.findViewById(R.id.text_view_living_place_rent);
+        textViewRoomType = view.findViewById(R.id.text_view_living_room_type);
+        textViewDistance = view.findViewById(R.id.edit_text_living_place_distance);
+
+        textViewHeading.setText("PG for Boys");
+        textViewAddress.setText(livingPlace.getLocalityDetails().getArea());
+        textViewRent.setText(Double.toString(livingPlace.getRentDetails().getRent()));
+        textViewRoomType.setText(livingPlace.getPlaceDetails().getRoomType());
+        textViewDistance.setText(Double.toString(livingPlace.getNearbyCollege().getDistanceFromCollege()));
+
+
         return view;
     }
 }

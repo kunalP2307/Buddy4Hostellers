@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +15,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Buddy4Hostellers">
+        <activity
+            android:name=".SendAndVerifyContactActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddServiceProviderContactDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ServiceProviderMyMessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ServiceProviderMyPlacesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ServiceProviderProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".ServiceProvHomeActivity"
             android:exported="false" />
