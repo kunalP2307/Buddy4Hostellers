@@ -12,7 +12,7 @@ public class LivingPlace implements Serializable {
     Amenities amenities;
     ServiceProviderContactDetails serviceProviderContactDetails;
     String imageReference;
-    InterestedStudents interestedStudents[];
+    InterestedStudents interestedStudents;
 
 
 
@@ -20,7 +20,7 @@ public class LivingPlace implements Serializable {
 
     }
 
-    public LivingPlace(String placeId, NearbyCollege nearbyCollege, PlaceDetails placeDetails, RentDetails rentDetails, LocalityDetails localityDetails, Amenities amenities, String imageReference, InterestedStudents[] interestedStudents) {
+    public LivingPlace(String placeId, NearbyCollege nearbyCollege, PlaceDetails placeDetails, RentDetails rentDetails, LocalityDetails localityDetails, Amenities amenities, String imageReference, InterestedStudents interestedStudents) {
         this.placeId = placeId;
         this.nearbyCollege = nearbyCollege;
         this.placeDetails = placeDetails;
@@ -95,11 +95,11 @@ public class LivingPlace implements Serializable {
         this.imageReference = imageReference;
     }
 
-    public InterestedStudents[] getInterestedStudents() {
+    public InterestedStudents getInterestedStudents() {
         return interestedStudents;
     }
 
-    public void setInterestedStudents(InterestedStudents[] interestedStudents) {
+    public void setInterestedStudents(InterestedStudents interestedStudents) {
         this.interestedStudents = interestedStudents;
     }
 

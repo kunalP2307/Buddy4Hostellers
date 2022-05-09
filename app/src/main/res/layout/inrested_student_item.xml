@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text_view_in_std_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="Kunal Patil"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_view_in_std_clg_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
+        android:text="DY patil "
+        android:textSize="18dp"
+        app:layout_constraintEnd_toStartOf="@+id/view32"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_in_std_name" />
+
+    <TextView
+        android:id="@+id/text_view_in_std_year"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
+        android:text="2 Year"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toStartOf="@+id/view32"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_in_std_clg_name" />
+
+    <TextView
+        android:id="@+id/text_view_in_std_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
+        android:text="Description"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toStartOf="@+id/view32"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_in_std_year" />
+
+    <View
+        android:id="@+id/view32"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="6dp"
+        android:background="#9F9F9F"
+        android:backgroundTint="#A6A6A6"
+        app:layout_constraintBottom_toTopOf="@+id/view26"
+        app:layout_constraintEnd_toStartOf="@+id/image_view_call_in_std"
+        app:layout_constraintTop_toTopOf="@+id/text_view_in_std_name" />
+
+    <ImageView
+        android:id="@+id/image_view_call_in_std"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/call_icon"
+        app:layout_constraintBottom_toTopOf="@+id/view26"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view26"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/teal_200"
+        android:backgroundTint="@color/teal_200"
+        app:layout_constraintEnd_toEndOf="parent
+"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_in_std_description" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

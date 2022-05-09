@@ -15,6 +15,14 @@ public class Student implements Serializable {
     private boolean gender;
     private String description;
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Student(int userId, String name, String email, String contact, String collegeName, String yearOfStudy, String branchOfStudy, boolean gender, String description) {
         this.userId = userId;
         this.name = name;

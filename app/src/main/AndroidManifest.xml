@@ -16,6 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Buddy4Hostellers">
         <activity
+            android:name=".AddServiceProContactMessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddNearClgForMessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddInterestedStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".IntrestedStudentsActivity"
+            android:exported="false" />
+        <activity
             android:name=".PlaceAddedActivity"
             android:exported="false" />
         <activity

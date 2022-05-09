@@ -3,18 +3,27 @@ package com.example.buddy4hostellers;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.buddy4hostellers.data.LivingPlace;
+import com.example.buddy4hostellers.data.Student;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -26,8 +35,10 @@ public class ShowPlaceDetailsActivity extends AppCompatActivity {
             ,textViewFloor,getTextViewApartmentName,textViewArea,textViewStreet,textViewLandMark
             ,textViewDetailsRent,textViewDeposit,textViewMaintenance,textViewFurnishing
             ,textViewRentPerHead;
-    Button buttonOtherDetails,buttonFindMates;
+    Button buttonOtherDetails,buttonFindMates,buttonCallOwner;
     LivingPlace livingPlace;
+    Student loggedInStudent;
+    String loggedUserId;
     private static final String TAG = "ShowPlaceDetailsActivit";
     
     @Override
@@ -35,13 +46,16 @@ public class ShowPlaceDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_place_details);
 
+        getUserId();
+
         livingPlace = (LivingPlace) getIntent().getSerializableExtra("EXTRA_SELECTED_PLACE");
 
         showImage();
+
+
+        getCurrentLoggedStudent();
         bindComponents();
-
-
-
+        addListeners();
 
         setDetails();
 
@@ -111,6 +125,34 @@ public class ShowPlaceDetailsActivity extends AppCompatActivity {
 
     }
 
+    public void addListeners(){
+
+        buttonFindMates.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ShowPlaceDetailsActivity.this,IntrestedStudentsActivity.class);
+                intent.putExtra("EXTRA_INTERESTED_STUD",loggedInStudent);
+                intent.putExtra("EXTRA_LIVING_PLACE",livingPlace);
+                startActivity(intent);
+            }
+        });
+
+        buttonOtherDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        buttonCallOwner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:"+livingPlace.getServiceProviderContactDetails().getContact()));
+                startActivity(intent);
+            }
+        });
+    }
 
 
     public void bindComponents(){
@@ -138,8 +180,28 @@ public class ShowPlaceDetailsActivity extends AppCompatActivity {
         this.textViewRentPerHead = findViewById(R.id.text_view_place_details_rent_det_rent_per_head);
         this.buttonFindMates = findViewById(R.id.button_details_living_place_find_mates);
         this.buttonOtherDetails = findViewById(R.id.button_details_living_place_other_details);
+        this.buttonCallOwner = findViewById(R.id.button_place_details_call_owner_new);
+    }
+
+    public void getCurrentLoggedStudent(){
+
+       FirebaseDatabase.getInstance().getReference("UserStudent").child("IattK4Fp3lZaxFFUlJUBUpUN3Ri2").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                loggedInStudent = snapshot.getValue(Student.class);
+                Log.d(TAG, "onDataChange: "+loggedInStudent.getName());
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 
-
+    public void getUserId(){
+        loggedUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    }
 }

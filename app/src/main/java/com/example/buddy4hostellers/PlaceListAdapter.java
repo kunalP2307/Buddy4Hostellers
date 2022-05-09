@@ -22,6 +22,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -76,6 +77,12 @@ public class PlaceListAdapter extends BaseAdapter {
 
         ImageView imageView = view.findViewById(R.id.image_view_property_img);
 
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "onClick: Image CLicked");
+            }
+        });
         StorageReference mImageRef =
                 FirebaseStorage.getInstance().getReference("images/I"+livingPlace.getPlaceId());
         final long ONE_MEGABYTE = 1024 * 1024;
@@ -116,4 +123,6 @@ public class PlaceListAdapter extends BaseAdapter {
 
         return view;
     }
+
+
 }

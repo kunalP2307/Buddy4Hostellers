@@ -14,9 +14,9 @@ import com.example.buddy4hostellers.data.ServiceProviderContactDetails;
 
 import java.io.Serializable;
 
-public class AddServiceProviderContactDetailsActivity extends AppCompatActivity {
+public class AddServiceProContactMessActivity extends AppCompatActivity {
 
-    private static final String TAG = "AddServiceProviderConta";
+    private static final String TAG = "AddServiceProContactMessActivity";
 
     EditText editTextName,editTextContact;
     TextView textViewResendOTP;
@@ -25,7 +25,7 @@ public class AddServiceProviderContactDetailsActivity extends AppCompatActivity 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_service_provider_contact_details);
+        setContentView(R.layout.activity_add_service_pro_contact_mess);
 
         bindComponents();
 
@@ -50,7 +50,7 @@ public class AddServiceProviderContactDetailsActivity extends AppCompatActivity 
                 if(validInput()){
 
                     ServiceProviderContactDetails contactDetails = new ServiceProviderContactDetails(editTextName.getText().toString(),editTextContact.getText().toString());
-                    Intent intent = new Intent(AddServiceProviderContactDetailsActivity.this,SendAndVerifyContactActivity.class);
+                    Intent intent = new Intent(AddServiceProContactMessActivity.this,AddNearClgForMessActivity.class);
 
                     intent.putExtra("EXTRA_CONTACT_DETAILS", (Serializable) contactDetails);
 
