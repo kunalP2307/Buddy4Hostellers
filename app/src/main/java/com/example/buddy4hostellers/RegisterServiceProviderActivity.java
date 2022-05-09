@@ -142,7 +142,7 @@ public class RegisterServiceProviderActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()) {
                                         Toast.makeText(RegisterServiceProviderActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(RegisterServiceProviderActivity.this,ServiceProvHomeActivity.class));
+                                        startActivity(new Intent(RegisterServiceProviderActivity.this,LoginRegisterActivity.class));
                                     }
                                     else
                                         Toast.makeText(RegisterServiceProviderActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();

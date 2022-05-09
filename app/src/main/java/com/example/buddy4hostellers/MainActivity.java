@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.buddy4hostellers.data.Amenities;
 import com.example.buddy4hostellers.data.LivingPlace;
+import com.example.buddy4hostellers.data.Mess;
 import com.example.buddy4hostellers.data.ServiceProvider;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,13 +30,14 @@ public class MainActivity extends AppCompatActivity {
     String TAG = "MainActivity";
     Intent intent;
     List<LivingPlace> livingPlaces;
+    List<Mess> messList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        intent = new Intent(MainActivity.this,AddServiceProContactMessActivity.class);
+        intent = new Intent(MainActivity.this,ShowAllMessActivity.class);
 
         Button button = findViewById(R.id.button3);
 
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         livingPlaces = new ArrayList<>();
-
+        messList = new ArrayList<>();
         FirebaseDatabase.getInstance().getReference("LivingPlaces").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -67,6 +69,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        FirebaseDatabase.getInstance().getReference("Messes").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                messList.clear();
+
+                for(DataSnapshot poDataSnapshot : snapshot.getChildren()){
+                    Mess mess = poDataSnapshot.getValue(Mess.class);
+                    messList.add(mess);
+                    Log.d(TAG, "onDataChange: "+mess.getMessId());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
         ServiceProvider serviceProvider = new ServiceProvider(1,"kunal","mail","123",null,null,null);
 
        /* FirebaseDatabase.getInstance().getReference("UserServiceProvider").child("gCrGe0kBLPae80z2tSO8zQH61cE3")
@@ -78,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
         });*/
 
         intent.putExtra("EXTRA_ALL_PLACES", (Serializable) livingPlaces);
+
+        intent.putExtra("EXTRA_ALL_MESSES", (Serializable) messList);
 
     }
 

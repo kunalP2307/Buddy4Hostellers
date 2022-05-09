@@ -185,7 +185,8 @@ public class ShowPlaceDetailsActivity extends AppCompatActivity {
 
     public void getCurrentLoggedStudent(){
 
-       FirebaseDatabase.getInstance().getReference("UserStudent").child("IattK4Fp3lZaxFFUlJUBUpUN3Ri2").addValueEventListener(new ValueEventListener() {
+       FirebaseDatabase.getInstance().getReference("UserStudent").
+               child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 loggedInStudent = snapshot.getValue(Student.class);

@@ -7,9 +7,12 @@ public class Mess implements Serializable {
     String messId;
     ServiceProviderContactDetails serviceProviderContactDetails;
     NearbyCollege nearbyCollege;
-    LocalityDetails localityDetails;
     String messName;
     String foodType;
+
+    public Mess(){
+
+    }
 
     public String getMessId() {
         return messId;
@@ -35,14 +38,6 @@ public class Mess implements Serializable {
         this.nearbyCollege = nearbyCollege;
     }
 
-    public LocalityDetails getLocalityDetails() {
-        return localityDetails;
-    }
-
-    public void setLocalityDetails(LocalityDetails localityDetails) {
-        this.localityDetails = localityDetails;
-    }
-
     public String getMessName() {
         return messName;
     }
@@ -59,11 +54,10 @@ public class Mess implements Serializable {
         this.foodType = foodType;
     }
 
-    public Mess(String messId, ServiceProviderContactDetails serviceProviderContactDetails, NearbyCollege nearbyCollege, LocalityDetails localityDetails, String messName, String foodType) {
+    public Mess(String messId, ServiceProviderContactDetails serviceProviderContactDetails, NearbyCollege nearbyCollege, String messName, String foodType) {
         this.messId = messId;
         this.serviceProviderContactDetails = serviceProviderContactDetails;
         this.nearbyCollege = nearbyCollege;
-        this.localityDetails = localityDetails;
         this.messName = messName;
         this.foodType = foodType;
     }

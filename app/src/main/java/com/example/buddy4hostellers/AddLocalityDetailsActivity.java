@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import com.example.buddy4hostellers.data.LivingPlace;
 import com.example.buddy4hostellers.data.LocalityDetails;
+import com.example.buddy4hostellers.data.Mess;
 import com.example.buddy4hostellers.data.RentDetails;
 
 public class AddLocalityDetailsActivity extends AppCompatActivity {
@@ -57,6 +58,7 @@ public class AddLocalityDetailsActivity extends AppCompatActivity {
                 String landMark = editTextLandmark.getText().toString();
 
                 LocalityDetails liLocalityDetails = new LocalityDetails(area,street,landMark,0,0);
+
 
                 livingPlace.setLocalityDetails(liLocalityDetails);
 

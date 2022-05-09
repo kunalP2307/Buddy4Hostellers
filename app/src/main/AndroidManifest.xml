@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Buddy4Hostellers">
         <activity
+            android:name=".ShowAllMessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddMessDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddServiceProContactMessActivity"
             android:exported="false" />
         <activity

@@ -112,11 +112,17 @@ public class LoginRegisterActivity extends AppCompatActivity {
 
                     String loggedUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     Log.d(TAG, "onComplete: Logged User id : "+loggedUserId);
+
                     String userType = intent.getStringExtra("USER_TYPE");
-                    if(userType.equals("STUDENT"))
-                        startActivity(new Intent(LoginRegisterActivity.this,StudentHomeActivity.class));
+                    if(userType != null) {
+                        if (userType.equals("STUDENT"))
+                            startActivity(new Intent(LoginRegisterActivity.this, StudentHomeActivity.class));
+                        else
+                            startActivity(new Intent(LoginRegisterActivity.this,ServiceProvHomeActivity.class));
+                    }
                     else
                         startActivity(new Intent(LoginRegisterActivity.this,ServiceProvHomeActivity.class));
+
 
                 }
                 else{

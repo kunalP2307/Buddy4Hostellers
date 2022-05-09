@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.buddy4hostellers.data.Mess;
 import com.example.buddy4hostellers.data.ServiceProviderContactDetails;
 
 import java.io.Serializable;
@@ -38,7 +39,6 @@ public class AddServiceProContactMessActivity extends AppCompatActivity {
         this.editTextContact = findViewById(R.id.edit_text_service_pro_contact_mess);
         this.editTextName = findViewById(R.id.edit_text_service_pro_name_mess);
         this.buttonContinue = findViewById(R.id.button_continue_service_pro_continue_mess);
-        this.textViewResendOTP = findViewById(R.id.text_view_resend_otp);
 
     }
 
@@ -51,8 +51,9 @@ public class AddServiceProContactMessActivity extends AppCompatActivity {
 
                     ServiceProviderContactDetails contactDetails = new ServiceProviderContactDetails(editTextName.getText().toString(),editTextContact.getText().toString());
                     Intent intent = new Intent(AddServiceProContactMessActivity.this,AddNearClgForMessActivity.class);
-
-                    intent.putExtra("EXTRA_CONTACT_DETAILS", (Serializable) contactDetails);
+                    Mess mess = new Mess();
+                    mess.setServiceProviderContactDetails(contactDetails);
+                    intent.putExtra("EXTRA_MESS", (Serializable) mess);
 
                     startActivity(intent);
                 }

@@ -29,7 +29,7 @@ public class RegisterStudentCollegeActivity extends AppCompatActivity implements
 
     String TAG = "RegisterStudentCollegeActivity";
     EditText editTextCollegeName,editTextDescribeYourself;
-    Spinner spinnerCourse,spinnerYearOfStudy;
+    Spinner spinnerCourse,spinnerYearOfStudy,spinnerCollege;
     RadioButton radioButtonMale,radioButtonFemale;
     Button buttonSignUp;
     FirebaseAuth firebaseAuth;
@@ -77,6 +77,13 @@ public class RegisterStudentCollegeActivity extends AppCompatActivity implements
 
     public void bindComponents(){
 
+        this.spinnerCollege = findViewById(R.id.spinner_college_name_register_std);
+
+        ArrayAdapter arrayAdapterCollege = new ArrayAdapter(this, android.R.layout.simple_spinner_item,CollegeDetails.colleges);
+        arrayAdapterCollege.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCollege.setAdapter(arrayAdapterCollege);
+
+
         this.editTextCollegeName = findViewById(R.id.edit_text_reg_service_pro_name);
         this.editTextDescribeYourself = findViewById(R.id.edit_text_reg_clg_describe);
         this.spinnerCourse = findViewById(R.id.spinner_reg_course);
@@ -88,13 +95,6 @@ public class RegisterStudentCollegeActivity extends AppCompatActivity implements
     }
 
     public void addListners(){
-
-        this.editTextCollegeName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(RegisterStudentCollegeActivity.this,CollegeListActivity.class));
-            }
-        });
 
 
         this.radioButtonFemale.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -133,7 +133,7 @@ public class RegisterStudentCollegeActivity extends AppCompatActivity implements
         System.out.println("temp");
         if(validInput()){
 
-            college = editTextCollegeName.getText().toString();
+            college = spinnerCollege.getSelectedItem().toString();
             yearOfStudy = spinnerYearOfStudy.getSelectedItem().toString();
             course = spinnerCourse.getSelectedItem().toString();
             gender = true;
@@ -166,6 +166,9 @@ public class RegisterStudentCollegeActivity extends AppCompatActivity implements
 
                                     if(task.isSuccessful()){
                                         Toast.makeText(RegisterStudentCollegeActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(getApplicationContext(),LoginRegisterActivity.class);
+                                        intent.putExtra("USER_TYPE","STUDENT");
+                                        startActivity(intent);
                                     }
 
                                     else{
@@ -185,11 +188,6 @@ public class RegisterStudentCollegeActivity extends AppCompatActivity implements
 
         boolean validInput = true;
 
-        if(editTextCollegeName.getText().toString().isEmpty()){
-            editTextCollegeName.setError("Please Select Your College");
-            editTextCollegeName.requestFocus();
-            validInput = false;
-        }
         if(spinnerCourse.getSelectedItem().toString().equals(CollegeDetails.courses[0])){
             TextView errorTextView = (TextView) spinnerCourse.getSelectedView();
             errorTextView.setError("Please Select Course");
@@ -222,7 +220,7 @@ public class RegisterStudentCollegeActivity extends AppCompatActivity implements
 
         if(bundle != null){
             String collegeName = bundle.getString("EXTRA_SELECTED_COLLEGE");
-            editTextCollegeName.setText(collegeName);
+            //editTextCollegeName.setText(collegeName);
         }
     }
     public void initSpinners(){

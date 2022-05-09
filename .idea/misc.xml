@@ -16,9 +16,11 @@
         <entry key="app/src/main/res/layout/activity_add_amenities_details.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_add_interested_student.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/layout/activity_add_locality_details.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/activity_add_mess_details.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_add_near_by_college.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_add_near_clg_for_mess.xml" value="0.536" />
         <entry key="app/src/main/res/layout/activity_add_place_details.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/activity_add_place_images.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_add_service_pro_contact_mess.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/layout/activity_add_service_provider_contact_details.xml" value="0.2717391304347826" />
         <entry key="app/src/main/res/layout/activity_college_list.xml" value="0.23233695652173914" />
@@ -40,6 +42,7 @@
         <entry key="app/src/main/res/layout/activity_service_provider_my_places.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_service_provider_profile.xml" value="0.13645833333333332" />
         <entry key="app/src/main/res/layout/activity_show_all_living_places.xml" value="0.23233695652173914" />
+        <entry key="app/src/main/res/layout/activity_show_all_mess.xml" value="0.26614583333333336" />
         <entry key="app/src/main/res/layout/activity_show_image.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_show_place_details.xml" value="0.264" />
         <entry key="app/src/main/res/layout/activity_student_home.xml" value="0.2980072463768116" />
@@ -48,6 +51,7 @@
         <entry key="app/src/main/res/layout/activity_temp.xml" value="0.23233695652173914" />
         <entry key="app/src/main/res/layout/college_name_list_view.xml" value="0.23233695652173914" />
         <entry key="app/src/main/res/layout/inrested_student_item.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/mess_list_item.xml" value="0.536" />
         <entry key="app/src/main/res/layout/place_list_item.xml" value="0.536" />
         <entry key="app/src/main/res/menu/menu_navigation.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/menu/menu_service_provider_menu.xml" value="0.3229166666666667" />

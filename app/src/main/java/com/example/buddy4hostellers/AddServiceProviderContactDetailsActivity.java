@@ -35,9 +35,9 @@ public class AddServiceProviderContactDetailsActivity extends AppCompatActivity 
 
     public void bindComponents(){
 
-        this.editTextContact = findViewById(R.id.edit_text_service_pro_contact_mess);
-        this.editTextName = findViewById(R.id.edit_text_service_pro_name_mess);
-        this.buttonContinue = findViewById(R.id.button_continue_service_pro_continue_mess);
+        this.editTextContact = findViewById(R.id.edit_text_service_pro_contact);
+        this.editTextName = findViewById(R.id.edit_text_service_pro_name);
+        this.buttonContinue = findViewById(R.id.button_continue_service_pro_continue);
         this.textViewResendOTP = findViewById(R.id.text_view_resend_otp);
 
     }
