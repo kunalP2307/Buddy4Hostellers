@@ -99,9 +99,7 @@ public class MessAdapter extends BaseAdapter {
         textViewDistance.setText(Double.toString(mess.getNearbyCollege().getDistanceFromCollege()));
         textViewFoodType.setText(mess.getFoodType());
         textViewMessName.setText(mess.getMessName());
-
-
-
+        
         return view;
     }
 }

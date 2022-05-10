@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        intent = new Intent(MainActivity.this,ShowAllMessActivity.class);
+        intent = new Intent(MainActivity.this,SelectUserActivity.class);
+        startActivity(intent);
 
         Button button = findViewById(R.id.button3);
 

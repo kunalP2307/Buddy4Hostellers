@@ -3,6 +3,7 @@ package com.example.buddy4hostellers;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -102,11 +103,17 @@ public class IntrestedStudentsActivity extends AppCompatActivity implements Adap
             listViewInterestedStudents.setAdapter(intrestedStudentsAdapter);
             listViewInterestedStudents.setOnItemClickListener(this);
         }
-
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+        Student student = (Student) intrestedStudentsAdapter.getItem(i);
+
+        String contact = student.getContact();
+
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:"+contact));
+        startActivity(intent);
     }
 }

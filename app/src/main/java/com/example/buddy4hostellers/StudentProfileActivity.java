@@ -7,12 +7,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class StudentProfileActivity extends AppCompatActivity {
 
     String TAG = "StudentProfileActivity";
+    TextView textViewLogout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +44,15 @@ public class StudentProfileActivity extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+
+        textViewLogout = findViewById(R.id.text_view_log_out_std);
+        textViewLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(),SelectUserActivity.class));
             }
         });
     }

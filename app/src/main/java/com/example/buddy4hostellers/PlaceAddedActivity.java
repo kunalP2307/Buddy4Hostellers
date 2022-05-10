@@ -21,8 +21,10 @@ public class PlaceAddedActivity extends AppCompatActivity {
         bindComponents();
 
         String type = getIntent().getStringExtra("ADD_TYPE");
-        if(type.equals("MESS")){
-            textViewPlaceAdded.setText("Your Mess Has Been Added to Our Portal Sucsessfully!");
+        if(type != null) {
+            if (type.equals("MESS")) {
+                textViewPlaceAdded.setText("Your Mess Has Been Added to Our Portal Sucsessfully!");
+            }
         }
 
     }

@@ -3,6 +3,7 @@ package com.example.buddy4hostellers;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,6 +46,12 @@ public class ShowAllMessActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+        Mess mess = (Mess) messAdapter.getItem(i);
+
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:"+mess.getServiceProviderContactDetails().getContact()));
+        startActivity(intent);
 
     }
 }

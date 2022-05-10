@@ -47,9 +47,7 @@ public class ServiceProvHomeActivity extends AppCompatActivity {
 
         bindComponents();
         addListeners();
-
-
-
+        
 
     }
 
@@ -63,7 +61,7 @@ public class ServiceProvHomeActivity extends AppCompatActivity {
         this.buttonAddPlaceAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ServiceProvHomeActivity.this,AddNearByCollegeActivity.class);
+                Intent intent = new Intent(ServiceProvHomeActivity.this,AddServiceProviderContactDetailsActivity.class);
                 startActivity(intent);
             }
         });
@@ -71,7 +69,8 @@ public class ServiceProvHomeActivity extends AppCompatActivity {
         this.buttonAddMessAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(ServiceProvHomeActivity.this,AddServiceProContactMessActivity.class);
+                startActivity(intent);
             }
         });
     }

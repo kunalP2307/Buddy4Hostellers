@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ServiceProviderProfileActivity extends AppCompatActivity {
 
@@ -36,6 +39,15 @@ public class ServiceProviderProfileActivity extends AppCompatActivity {
                          return true;
                 }
                 return false;
+            }
+        });
+
+        TextView textViewLogout = findViewById(R.id.text_view_log_out_ser_prov);
+        textViewLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(),SelectUserActivity.class));
             }
         });
 

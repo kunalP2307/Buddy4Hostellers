@@ -20,4 +20,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_student_navigation" />
 
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/logout_icon" />
+
+    <TextView
+        android:id="@+id/text_view_log_out_std"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_vertical"
+        android:text="LOGOUT"
+        android:textColor="@color/teal_200"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView14" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
